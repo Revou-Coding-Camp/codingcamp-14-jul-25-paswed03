@@ -1,308 +1,527 @@
-
-@import url("https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css");
-
+/* General Styling */
 body {
-    font-family: 'Inter', sans-serif;
-    color: #333; 
-    line-height: 1.6; 
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-
-html {
-    scroll-behavior: smooth;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-body {
-    padding-top: 5rem;
+h1, h2, h3 {
+    color: #333;
 }
-@media (min-width: 640px) { 
-    body {
-        padding-top: 6rem; 
-    }
-}
-
-
-.active-nav-link {
-    color: #2563eb; 
-    border-bottom: 2px solid #2563eb; 
-    padding-bottom: 0.25rem; 
-}
-
 
 a {
     text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    border-bottom-left-radius: 8px; /* Sudut membulat */
+    border-bottom-right-radius: 8px; /* Sudut membulat */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    border-radius: 50%; /* Logo bulat */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #555;
+    font-weight: bold;
     transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 5px;
 }
 
-
-button {
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+nav a:hover {
+    color: #007bff;
+    background-color: #e9f5ff;
 }
 
-button:active {
-    transform: scale(0.98); 
+/* Hero Section (Home Page) */
+.hero-section {
+    background-color: #e0f2f7; /* Latar belakang biru muda */
+    padding: 50px 0;
+    text-align: center;
+    border-radius: 8px; /* Sudut membulat */
+    margin-top: 20px;
 }
 
+.hero-section h1 {
+    color: #007bff;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.hero-image-placeholder {
+    width: 100%;
+    height: 300px; /* Sesuaikan tinggi sesuai kebutuhan */
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    color: #666;
+    border-radius: 8px; /* Sudut membulat */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headquarter Section */
+.headquarter-section {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #ffffff;
+    margin-top: 20px;
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headquarter-section h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #007bff;
+}
+
+.headquarters-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.headquarter-item {
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    padding: 15px;
+    border-radius: 8px; /* Sudut membulat */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.headquarter-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.circle-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    border-radius: 50%; /* Lingkaran */
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #666;
+    border: 2px solid #bbb;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Message Us Section */
+.message-us-section {
+    background-color: #ffffff;
+    padding: 50px 0;
+    margin-top: 20px;
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-us-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #007bff;
+}
+
+.message-us-content {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; /* Izinkan wrapping pada layar kecil */
+    justify-content: center;
+}
+
+.message-us-content form {
+    flex: 1;
+    min-width: 300px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Sudut membulat */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
 
 .form-group {
-    margin-bottom: 1rem; 
+    margin-bottom: 15px;
 }
 
-
-.shadow-custom-light {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-.rounded-xl {
-    border-radius: 0.75rem; 
-}
-
-#userName {
-    color: #2196f3; 
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+    width: calc(100% - 20px); /* Kurangi padding */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Sudut membulat */
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px; /* Sudut membulat */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.submission-output {
+    flex: 1;
+    min-width: 300px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Sudut membulat */
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.submission-output h3 {
+    margin-top: 0;
+    color: #007bff;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.submission-output p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.submission-output strong {
+    color: #333;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top-left-radius: 8px; /* Sudut membulat */
+    border-top-right-radius: 8px; /* Sudut membulat */
+}
+
+/* Profile Page Specific Styling */
+.profile-hero-banner {
+    /* Placeholder image, ganti dengan gambar banner perusahaan Anda */
+    background-image: url('https://placehold.co/1200x400/007bff/ffffff?text=Banner+Perusahaan+Teknologi');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 8px; /* Sudut membulat */
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-hero-banner h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: white; /* Pastikan teks terlihat */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.profile-hero-banner p {
+    font-size: 1.5em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.about-company-section,
+.vision-mission-section,
+.portfolio-section { /* Tambahkan portfolio-section di sini */
+    background-color: #ffffff;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 8px; /* Sudut membulat */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-company-section h2,
+.vision-mission-section h2,
+.portfolio-section h2 { /* Tambahkan portfolio-section di sini */
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.about-content p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.vision-mission-section {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.vision, .mission {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px; /* Sudut membulat */
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.vision h2, .mission h2 {
+    text-align: left;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.mission ul {
+    list-style: disc inside;
+}
+
+.mission li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Portfolio Section Styling */
+.portfolio-intro {
+    text-align: center;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.portfolio-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px; /* Tinggi gambar portofolio */
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.portfolio-item h3 {
+    padding: 15px;
+    margin: 0;
+    color: #007bff;
+    font-size: 1.4em;
+}
+
+.portfolio-item p {
+    padding: 0 15px 15px;
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.btn-view-project {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin: 0 15px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-view-project:hover {
+    background-color: #0056b3;
 }
 
 
-.active-nav-link {
-    color: #2563eb; 
-    border-bottom: 2px solid #2563eb; 
-    padding-bottom: 0.25rem; 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .hero-section {
+        padding: 30px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+
+    .headquarters-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .headquarter-item {
+        max-width: 100%;
+    }
+
+    .message-us-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .message-us-content form,
+    .submission-output {
+        min-width: unset; /* Hapus min-width untuk mobile */
+        width: 100%;
+    }
+
+    .profile-hero-banner {
+        padding: 60px 20px;
+    }
+
+    .profile-hero-banner h1 {
+        font-size: 2.2em;
+    }
+
+    .profile-hero-banner p {
+        font-size: 1.2em;
+    }
+
+    .about-company-section,
+    .vision-mission-section,
+    .portfolio-section {
+        padding: 20px;
+    }
+
+    .vision-mission-section {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Satu kolom di mobile */
+    }
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasek Wedana Website</title>
-    <link rel="stylesheet" href="css/style.css">
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-100 text-gray-800 antialiased">
-    <!-- Header Section -->
-    <header class="bg-white shadow-sm py-4 px-6 flex flex-col sm:flex-row justify-between items-center rounded-b-lg fixed w-full top-0 z-50">
-        <div class="flex items-center mb-4 sm:mb-0">
-            <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-gray-800 font-bold text-lg mr-3">PW</div>
-        </div>
-        <nav>
-            <ul class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-8">
-                <li><a href="#home" class="text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200">Home</a></li>
-                <li><a href="#our-profile" class="text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200">Our Profile</a></li>
-                <li><a href="#portfolio" class="text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200">Portfolio</a></li>
-                <li><a href="#message-us" class="text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200">Message Us</a></li>
-            </ul>
-        </nav>
-    </header>
+    .hero-section h1 {
+        font-size: 1.8em;
+    }
 
-    <main class="container mx-auto p-4 max-w-6xl mt-20 sm:mt-24"> <!-- Added margin-top to account for fixed header -->
-        <!-- Home Section -->
-        <section id="home" class="bg-white p-8 mt-6 rounded-lg shadow-md">
-            <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-gray-800">Hi <span id="userName"></span>, Welcome To Website</h1>
-            <p class="text-lg text-gray-600">This is my Portfolio Website.</p>
-        </section>
+    .headquarter-section h2,
+    .message-us-section h2,
+    .about-company-section h2,
+    .vision-mission-section h2,
+    .portfolio-section h2 {
+        font-size: 1.6em;
+    }
 
-        <!-- Image Section (Menggantikan Image Placeholder) -->
-        <section class="mt-6 rounded-lg overflow-hidden shadow-md">
-            <img src="assets/Black and White Simple Art Director LinkedIn Banner.png" alt="Gambar Utama Halaman Beranda" class="w-full h-auto object-cover rounded-lg">
-        </section>
-
-
-        <!-- Our Profile Section -->
-        <section id="our-profile" class="bg-white p-8 mt-6 rounded-lg shadow-md text-center">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-gray-800">Our Profile</h2>
-
-            <!-- Photo Banner Section (Diintegrasikan di sini) -->
-            <div class="relative bg-gradient-to-r from-blue-500 to-indigo-600 h-64 sm:h-80 rounded-lg shadow-md flex items-center justify-center overflow-hidden mb-12">
-                <img src=https://i.pinimg.com/originals/4d/ce/05/4dce053bf1de4cbe25a0fd2f35feb5b6.jpg alt="Company Banner" class="absolute inset-0 w-full h-full object-cover opacity-70">
-                <div class="relative z-10 text-white text-center p-4">
-                    <h3 class="text-4xl sm:text-5xl font-extrabold drop-shadow-lg">Get To Know</h3>
-                </div>
-            </div>
-
-           <div class="flex flex-col sm:flex-row justify-around items-center space-y-8 sm:space-y-0 sm:space-x-8 mb-12">
-                <!-- Profile Item: Instagram -->
-                <div class="flex flex-col items-center">
-                    <a href="https://www.instagram.com/pasek_wedana?igsh=emcxNTR4eWlxemVv" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center group">
-                        <div class="w-28 h-28 border border-gray-300 rounded-full bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-pink-100 transition-colors duration-200">
-                            <!-- Instagram Icon -->
-                            <img src="https://i.pinimg.com/736x/03/ea/1e/03ea1e0f50e5077829d3cc4bc13555e2.jpg" alt="Instagram Logo" class="h-12 w-12 object-contain">
-                        </div>
-                        <p class="font-semibold text-gray-700 group-hover:text-pink-600 transition-colors duration-200">Instagram</p>
-                    </a>
-                </div>
-                <!-- Profile Item: Facebook -->
-                <div class="flex flex-col items-center">
-                    <a href="https://www.facebook.com/share/16NnixHsva/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center group">
-                        <div class="w-28 h-28 border border-gray-300 rounded-full bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors duration-200">
-                            <!-- Facebook Icon -->
-                            <img src="https://i.pinimg.com/736x/1f/48/f1/1f48f163f50acc091d6232a5555dea1e.jpg" alt="Facebook Logo" class="h-12 w-12 object-contain">
-                        </div>
-                        <p class="font-semibold text-gray-700 group-hover:text-blue-700 transition-colors duration-200">Facebook</p>
-                    </a>
-                </div>
-                <!-- Profile Item: LinkedIn -->
-                <div class="flex flex-col items-center">
-                    <a href="https://www.linkedin.com/in/i-gede-pasek-wedana-87a0b3319/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center group">
-                        <div class="w-28 h-28 border border-gray-300 rounded-full bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-blue-200 transition-colors duration-200">
-                            <!-- LinkedIn Icon -->
-                            <img src="https://static.vecteezy.com/system/resources/previews/016/716/470/non_2x/linkedin-icon-free-png.png" alt="LinkedIn Logo" class="h-12 w-12 object-contain">
-                        </div>
-                        <p class="font-semibold text-gray-700 group-hover:text-blue-800 transition-colors duration-200">LinkedIn</p>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Detailed About Company Section -->
-            <div class="p-8 mt-6 rounded-lg bg-gray-50 shadow-inner text-left">
-                <h3 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">Tentang Saya</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Saya adalah seorang pengembang web front-end, bersemangat dalam membangun aplikasi web yang intuitif dan responsif. Saya memiliki latar belakang di bidang desain dan selalu mencari tantangan baru.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            Saya percaya bahwa desain yang baik dan kode yang bersih adalah kunci untuk menciptakan pengalaman pengguna yang luar biasa. Saya senang belajar teknologi baru dan terus meningkatkan keahlian saya.
-                        </p>
-                    </div>
-                    <div>
-                        <img src="assets/IMG_3092.png" alt="Our Team" class="rounded-lg shadow-lg w-full h-auto object-cover">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Visi dan Misi Perusahaan Section -->
-            <div class="p-8 mt-6 mb-6 rounded-lg bg-gray-50 shadow-inner text-left">
-                <h3 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">Visi & Misi Perusahaan</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Visi -->
-                    <div class="bg-blue-100 p-6 rounded-lg shadow-md">
-                        <h4 class="text-2xl font-bold text-blue-700 mb-4 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                            Visi
-                        </h4>
-                        <p class="text-gray-700 leading-relaxed">
-                            Menjadi perusahaan teknologi terkemuka di Asia Tenggara, yang dikenal karena inovasi disruptif, keunggulan operasional, dan kontribusi positif terhadap perkembangan digital masyarakat. Kami bercita-cita untuk menjadi mitra pilihan utama dalam transformasi digital bagi bisnis dan individu.
-                        </p>
-                    </div>
-                    <!-- Misi -->
-                    <div class="bg-green-100 p-6 rounded-lg shadow-md">
-                        <h4 class="text-2xl font-bold text-green-700 mb-4 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3 text-green-600" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.92 8.725c-.783-.57-.381-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-                            </svg>
-                            Misi
-                        </h4>
-                        <ul class="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
-                            <li>Mengembangkan dan menyediakan solusi teknologi inovatif yang relevan dan bernilai tinggi.</li>
-                            <li>Membangun tim ahli yang berdedikasi dan berorientasi pada hasil untuk memberikan layanan terbaik.</li>
-                            <li>Menciptakan ekosistem digital yang inklusif dan berkelanjutan melalui kemitraan strategis.</li>
-                            <li>Menjunjung tinggi etika bisnis, transparansi, dan tanggung jawab sosial dalam setiap operasional.</li>
-                            <li>Terus belajar dan beradaptasi dengan tren teknologi global untuk memastikan relevansi di masa depan.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="bg-white p-8 mt-6 rounded-lg shadow-md text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">Our Portfolio</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portfolio Item 1 -->
-                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <img src="https://placehold.co/600x400/e0f2f7/0288d1?text=Project+Alpha" alt="Project Alpha" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Project Alpha</h3>
-                        <p class="text-gray-600 text-sm">Pengembangan aplikasi web untuk manajemen proyek yang efisien.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Lihat Detail &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 2 -->
-                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <img src="https://placehold.co/600x400/ffe0b2/e65100?text=Project+Beta" alt="Project Beta" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Project Beta</h3>
-                        <p class="text-gray-600 text-sm">Desain ulang antarmuka pengguna untuk platform e-commerce.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Lihat Detail &rarr;</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 -->
-                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <img src="https://placehold.co/600x400/d1c4e9/4527a0?text=Project+Gamma" alt="Project Gamma" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Project Gamma</h3>
-                        <p class="text-gray-600 text-sm">Sistem manajemen konten khusus untuk blog perusahaan.</p>
-                        <a href="#" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-semibold">Lihat Detail &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Message Us Section -->
-        <section id="message-us" class="bg-white p-8 mt-6 mb-6 rounded-lg shadow-md">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-8 text-gray-800">Message Us</h2>
-            <div class="flex flex-col lg:flex-row gap-8 justify-between">
-                <!-- Form Section -->
-                <div class="flex-1 min-w-[300px]">
-                    <form id="messageForm" class="space-y-5">
-                        <div class="form-group">
-                            <label for="nama" class="block text-gray-700 font-semibold mb-2">Nama</label>
-                            <input type="text" id="nama" name="nama" placeholder="Nama Anda" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggalLahir" class="block text-gray-700 font-semibold mb-2">Tanggal Lahir</label>
-                            <input type="date" id="tanggalLahir" name="tanggalLahir" value="2023-04-02" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-gray-700 font-semibold mb-2">Jenis Kelamin</label>
-                            <div class="flex space-x-6">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="jenisKelamin" value="Laki-Laki" class="form-radio h-5 w-5 text-blue-600" checked>
-                                    <span class="ml-2 text-gray-700">Laki-Laki</span>
-                                </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" name="jenisKelamin" value="Perempuan" class="form-radio h-5 w-5 text-blue-600">
-                                    <span class="ml-2 text-gray-700">Perempuan</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="pesan" class="block text-gray-700 font-semibold mb-2">Pesan</label>
-                            <textarea id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini..." rows="4" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 resize-y"></textarea>
-                            <p id="pesanError" class="text-red-500 text-sm mt-1 hidden">Pesan tidak boleh kosong.</p>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 font-bold text-lg shadow-md">Submit</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Display Section -->
-                <div class="flex-1 min-w-[300px] border border-gray-300 p-6 rounded-lg bg-gray-50 shadow-sm">
-                    <p class="mb-3 text-gray-700"><strong>Current time :</strong> <span id="currentTime" class="font-medium"></span></p>
-                    <p class="mb-3 text-gray-700"><strong>Nama :</strong> <span id="displayNama" class="font-medium"></span></p>
-                    <p class="mb-3 text-gray-700"><strong>Tanggal Lahir :</strong> <span id="displayTanggalLahir" class="font-medium"></span></p>
-                    <p class="mb-3 text-gray-700"><strong>Jenis Kelamin :</strong> <span id="displayJenisKelamin" class="font-medium"></span></p>
-                    <p class="mb-3 text-gray-700"><strong>Pesan :</strong> <span id="displayPesan" class="font-medium"></span></p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white text-center py-5 text-sm rounded-t-lg">
-        <p>&copy; 2025 I Gede Pasek Wedana. All Rights Reserved.</p>
-    </footer>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
+    form button {
+        padding: 10px 15px;
+    }
+}
