@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perusahaan Teknologi Inovatif</title>
+    <!-- Link ke file CSS Anda -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Link ke Tailwind CSS CDN (untuk memastikan kelas Tailwind berfungsi) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Opsi untuk Google Font Inter (sudah diimpor di style.css, tapi bisa juga di sini) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
 
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <!-- Logo yang lebih dinamis -->
+            <div class="logo text-4xl font-extrabold mb-4 md:mb-0 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-transparent transition-all duration-300 ease-in-out transform hover:scale-105">Tech Innovate</div>
+            <!-- Menambahkan md:ml-auto untuk memindahkan navbar ke kanan pada layar sedang dan besar -->
+            <ul class="navbar-nav md:ml-auto">
+                <li class="nav-item"><a href="#home">Beranda</a></li>
+                <li class="nav-item"><a href="#about">Tentang Kami</a></li>
+                <li class="nav-item"><a href="#services">Layanan</a></li>
+                <li class="nav-item"><a href="#message-us">Hubungi Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <h1 id="welcomeMessage">Hi Pengunjung, Selamat Datang di Website</h1>
+        <p>Kami adalah pemimpin dalam solusi teknologi inovatif untuk masa depan yang lebih cerah.</p>
+        <p class="current-time">Waktu Saat Ini: <span id="currentTimeDisplay"></span></p>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Us Section -->
+        <section id="about" class="section-container">
+            <h2 class="text-center">Tentang Kami</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-8 mt-6">
+                <div class="md:w-1/2 mb-6 md:mb-0">
+                    <img src="https://placehold.co/600x400/A78BFA/ffffff?text=Tim+Inovasi" alt="" class="rounded-lg shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <p class="text-gray-700 text-lg leading-relaxed">
+                        Tech Innovate didirikan dengan visi untuk merevolusi cara bisnis beroperasi melalui teknologi mutakhir. Kami berdedikasi untuk menyediakan solusi perangkat lunak yang disesuaikan, layanan konsultasi IT, dan pengembangan produk inovatif yang mendorong pertumbuhan dan efisiensi.
+                    </p>
+                    <p class="text-gray-700 text-lg leading-relaxed mt-4">
+                        Dengan tim ahli yang bersemangat dan berpengalaman, kami berkomitmen untuk keunggulan dan kepuasan pelanggan. Kami percaya pada kekuatan kolaborasi dan inovasi berkelanjutan untuk mengatasi tantangan kompleks di dunia digital.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-container">
+            <h2 class="text-center">Layanan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://placehold.co/300x200/60A5FA/ffffff?text=Pengembangan+Web" alt="" class="rounded-md mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pengembangan Web & Aplikasi</h3>
+                    <p class="text-gray-600">Membangun situs web dan aplikasi seluler yang responsif dan berkinerja tinggi.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://placehold.co/300x200/34D399/ffffff?text=Konsultasi+IT" alt="" class="rounded-md mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Konsultasi IT & Strategi</h3>
+                    <p class="text-gray-600">Memberikan panduan ahli untuk strategi teknologi dan transformasi digital.</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://placehold.co/300x200/FBBF24/ffffff?text=Solusi+Cloud" alt="" class="rounded-md mb-4 w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Solusi Cloud & Keamanan</h3>
+                    <p class="text-gray-600">Mengimplementasikan solusi cloud yang aman dan skalabel untuk bisnis Anda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Us Form Section -->
+        <section id="message-us" class="section-container">
+            <h2 class="text-center">Hubungi Kami</h2>
+            <form id="messageForm" class="mt-6">
+                <div class="form-group">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Tanggal Lahir:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="form-group">
+                    <label>Jenis Kelamin:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="Laki-laki" required>
+                        <label for="male">Laki-laki</label>
+                        <input type="radio" id="female" name="gender" value="Perempuan">
+                        <label for="female">Perempuan</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan:</label>
+                    <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..." required minlength="10"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="reset" id="resetFormButton">Reset Formulir</button>
+                    <button type="submit">Kirim</button>
+                </div>
+            </form>
+
+            <div class="submission-output">
+                <h3 class="text-xl font-semibold text-blue-800 mb-4">Output Formulir:</h3>
+                <p><strong>Nama:</strong> <span id="outputName"></span></p>
+                <p><strong>Tanggal Lahir:</strong> <span id="outputBirthdate"></span></p>
+                <p><strong>Jenis Kelamin:</strong> <span id="outputGender"></span></p>
+                <p><strong>Pesan:</strong> <span id="outputMessage"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Tech Innovate. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Link ke file JavaScript Anda -->
+    <script src="js/script.js"></script>
+</body>
+</html>
