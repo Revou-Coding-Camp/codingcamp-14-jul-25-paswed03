@@ -1,148 +1,167 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 4. Ucapan selamat datang di Halaman Beranda "Hi Name" menggunakan JavaScript
-    const welcomeMessageElement = document.getElementById('welcomeMessage');
-    if (welcomeMessageElement) {
-        let userName = localStorage.getItem('userName'); // Coba ambil nama dari localStorage
+document.addEventListener('DOMContentLoaded', () => {
 
-        if (!userName) {
-            // Jika nama belum ada, minta pengguna untuk memasukkannya
-            userName = prompt("Selamat datang! Silakan masukkan nama Anda:");
-            if (userName) {
-                localStorage.setItem('userName', userName); // Simpan nama di localStorage
-            } else {
-                userName = "Pengunjung"; // Nama default jika pengguna tidak memasukkan apa-apa
-            }
-        }
-        welcomeMessageElement.textContent = `Hi ${userName}, Selamat Datang di Website`;
+    const profileData = {
+        nama: "I Gede Pasek Wedana",
+        jabatan: "IT Enthusiast",
+        fotoUrl: "https://i.pinimg.com/564x/60/04/c4/6004c4a8da220e7175c440f34cf5e4ab.jpg",
+        deskripsi: "Saya adalah seorang penggiat teknologi dari Karangasem, Bali. Saya ingin menciptakan pengalaman digital yang menarik dan fungsional. Saya percaya pada inovasi digital untuk membangun masa depan yang lebih baik.",
+        detail: [
+            { label: "Email", value: "pasekwedana@gmail.com" },
+            { label: "Telepon", value: "+62 821 4606 8855" },
+            { label: "Lokasi", value: "Karangasem, Bali" },
+        ],
+        sosialMedia: [
+            { nama: "LinkedIn", url: "https://www.linkedin.com/in/i-gede-pasek-wedana-87a0b3319/" },
+            { nama: "GitHub", url: "https://github.com/paswed03" },
+            { nama: "Instagram", url: "https://www.instagram.com/pasek_wedana?igsh=emcxNTR4eWlxemVv" }
+        ],
+        keahlian: ["HTML5", "Tailwind CSS", "JavaScript", "PHP", "Figma"]
+    };
+
+    function populateProfile() {
+        document.getElementById('profile-pic').src = profileData.fotoUrl;
+        document.getElementById('profile-pic').alt = `Foto Profil ${profileData.nama}`;
+        document.getElementById('profile-name').textContent = profileData.nama;
+        document.getElementById('profile-job').textContent = profileData.jabatan;
+        document.getElementById('profile-desc').textContent = profileData.deskripsi;
+
+        const detailsContainer = document.getElementById('profile-details');
+        detailsContainer.innerHTML = profileData.detail.map(item => `
+            <div class="flex items-start">
+                <span class="font-semibold w-20 flex-shrink-0">${item.label}:</span>
+                <a href="${item.link || '#'}" class="text-gray-700 hover:text-blue-500 break-words">${item.value}</a>
+            </div>
+        `).join('');
+
+        const socialContainer = document.getElementById('profile-social');
+        socialContainer.innerHTML = profileData.sosialMedia.map(sm => `
+            <a href="${sm.url}" class="text-gray-600 hover:text-blue-500 font-semibold">${sm.nama}</a>
+        `).join('');
+
+        const skillsContainer = document.getElementById('profile-skills');
+        skillsContainer.innerHTML = profileData.keahlian.map(skill => `
+            <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">${skill}</span>
+        `).join('');
     }
 
-    // 5. Validasi Formulir "Message Us" & tampilkan nilai saat mengirimkan formulir pada HTML dengan JavaScript
-    const messageForm = document.getElementById('messageForm');
-    const outputName = document.getElementById('outputName');
-    const outputBirthdate = document.getElementById('outputBirthdate');
-    const outputGender = document.getElementById('outputGender');
-    const outputMessage = document.getElementById('outputMessage');
-    const currentTimeDisplay = document.getElementById('currentTimeDisplay');
-    const submissionOutput = document.querySelector('.submission-output'); // Area untuk pesan feedback
+    function validateContactForm() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
 
-    // Mengatur waktu saat ini pada tampilan awal
-    updateCurrentTime();
-    // Memperbarui waktu setiap detik
-    setInterval(updateCurrentTime, 1000);
-
-    function updateCurrentTime() {
-        const now = new Date();
-        // Opsi format tanggal dan waktu agar sesuai dengan mockup
-        const options = {
-            weekday: 'short',
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            timeZoneName: 'short'
-        };
-        // Menggunakan 'en-GB' untuk format yang mirip dengan mockup (misal: Thu, Jul 17, 2025 18:23:00 GMT+07:00)
-        currentTimeDisplay.textContent = now.toLocaleString('en-GB', options);
-    }
-
-    // Fungsi untuk menampilkan pesan error atau sukses
-    function displayFeedbackMessage(message, type) {
-        // Hapus pesan sebelumnya
-        const existingError = submissionOutput.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
-        const existingSuccess = submissionOutput.querySelector('.success-message');
-        if (existingSuccess) {
-            existingSuccess.remove();
-        }
-
-        const feedbackMessage = document.createElement('p');
-        feedbackMessage.textContent = message;
-        feedbackMessage.classList.add(type === 'error' ? 'error-message' : 'success-message');
-        feedbackMessage.style.color = type === 'error' ? 'red' : 'green';
-        submissionOutput.prepend(feedbackMessage); // Tampilkan pesan di atas detail submission
-    }
-
-    if (messageForm) {
-        messageForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah pengiriman formulir default
-
-            // Mengambil nilai dari input formulir
-            const name = document.getElementById('name').value.trim(); // Gunakan .trim() untuk menghapus spasi
-            const birthdate = document.getElementById('birthdate').value;
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = form.elements['name'];
+            const email = form.elements['email'];
             const gender = document.querySelector('input[name="gender"]:checked');
-            const message = document.getElementById('message').value.trim();
+            const birthdate = form.elements['birthdate'];
+            const message = form.elements['message'];
+            
+            const nameError = document.getElementById('nameError');
+            const emailError = document.getElementById('emailError');
+            const genderError = document.getElementById('genderError');
+            const birthdateError = document.getElementById('birthdateError');
+            const messageError = document.getElementById('messageError');
+            
+            let isValid = true;
 
-            // Validasi yang lebih spesifik
-            if (name.length < 3) {
-                displayFeedbackMessage('Error: Nama harus diisi dan minimal 3 karakter!', 'error');
-                return;
+            [nameError, emailError, genderError, birthdateError, messageError].forEach(e => e.classList.add('hidden'));
+            [name, email, birthdate, message].forEach(i => i.classList.remove('border-red-500'));
+
+            if (name.value.trim() === '') { nameError.classList.remove('hidden'); name.classList.add('border-red-500'); isValid = false; }
+            if (!/^\S+@\S+\.\S+$/.test(email.value)) { emailError.classList.remove('hidden'); email.classList.add('border-red-500'); isValid = false; }
+            if (!gender) { genderError.classList.remove('hidden'); isValid = false; }
+            if (birthdate.value === '') { birthdateError.classList.remove('hidden'); birthdate.classList.add('border-red-500'); isValid = false; }
+            if (message.value.trim() === '') { messageError.classList.remove('hidden'); message.classList.add('border-red-500'); isValid = false; }
+
+            const resultContainer = document.getElementById('form-result');
+            if (isValid) {
+                const formattedDate = new Date(birthdate.value).toLocaleDateString('id-ID', {
+                    day: 'numeric', month: 'long', year: 'numeric'
+                });
+
+                console.log("Formulir berhasil divalidasi. Data yang dikirim:");
+                console.log({
+                    nama: name.value,
+                    email: email.value,
+                    jenisKelamin: gender.value,
+                    tanggalLahir: formattedDate,
+                    pesan: message.value
+                });
+
+                resultContainer.innerHTML = `
+                    <h4 class="font-bold text-lg mb-2">Pesan Terkirim!</h4>
+                    <p><strong>Nama:</strong> ${name.value}</p>
+                    <p><strong>Email:</strong> ${email.value}</p>
+                    <p><strong>Jenis Kelamin:</strong> ${gender.value}</p>
+                    <p><strong>Tanggal Lahir:</strong> ${formattedDate}</p>
+                    <p><strong>Pesan:</strong> ${message.value}</p>
+                `;
+                resultContainer.classList.remove('hidden');
+                form.reset();
+            } else {
+                resultContainer.classList.add('hidden');
             }
-
-            // Validasi tanggal lahir
-            if (!birthdate) {
-                displayFeedbackMessage('Error: Tanggal Lahir harus diisi!', 'error');
-                return;
-            }
-            const dateParts = birthdate.split('-'); // Asumsi format YYYY-MM-DD
-            const inputDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-            if (isNaN(inputDate.getTime())) {
-                displayFeedbackMessage('Error: Format Tanggal Lahir tidak valid!', 'error');
-                return;
-            }
-
-            if (!gender) {
-                displayFeedbackMessage('Error: Jenis Kelamin harus dipilih!', 'error');
-                return;
-            }
-
-            if (message.length < 10) {
-                displayFeedbackMessage('Error: Pesan harus diisi dan minimal 10 karakter!', 'error');
-                return;
-            }
-
-            // Jika semua validasi berhasil, hapus pesan error yang mungkin ada
-            const existingError = submissionOutput.querySelector('.error-message');
-            if (existingError) {
-                existingError.remove();
-            }
-
-            // Menampilkan nilai-nilai ke elemen output
-            outputName.textContent = name;
-            outputBirthdate.textContent = birthdate;
-            outputGender.textContent = gender.value;
-            outputMessage.textContent = message;
-
-            // Memberikan feedback sukses
-            displayFeedbackMessage('Pesan Anda telah berhasil dikirim!', 'success');
-
-            messageForm.reset(); // Mengosongkan formulir setelah pengiriman berhasil
         });
+    }
 
-        // Menambahkan event listener untuk tombol reset (jika ada)
-        const resetButton = document.getElementById('resetFormButton');
-        if (resetButton) {
-            resetButton.addEventListener('click', function() {
-                messageForm.reset();
-                // Hapus pesan feedback saat formulir direset
-                const existingError = submissionOutput.querySelector('.error-message');
-                if (existingError) {
-                    existingError.remove();
-                }
-                const existingSuccess = submissionOutput.querySelector('.success-message');
-                if (existingSuccess) {
-                    existingSuccess.remove();
-                }
-                // Kosongkan juga output yang ditampilkan
-                outputName.textContent = '';
-                outputBirthdate.textContent = '';
-                outputGender.textContent = '';
-                outputMessage.textContent = '';
-            });
+    function setupMobileMenu() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton) {
+            menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         }
     }
-});
 
+    function setupScrollSpy() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.onscroll = () => {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 75) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+        };
+    }
+
+    function updateLiveClock() {
+        const timeElement = document.getElementById('current-time');
+        if(!timeElement) return;
+
+        function update() {
+            const now = new Date();
+            const options = {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit',
+                timeZone: 'Asia/Makassar',
+                timeZoneName: 'short'
+            };
+            timeElement.textContent = `Time Now: ${now.toLocaleString('id-ID', options)}`;
+        }
+        update();
+        setInterval(update, 1000);
+    }
+
+    const userName = prompt("Selamat datang! Silakan masukkan nama Anda:", "Pengunjung");
+    if (userName) {
+        document.getElementById('welcome-message').textContent = `Hi, ${userName}`;
+    }
+
+    document.getElementById('footer-text').innerHTML = `&copy; ${new Date().getFullYear()} I Gede Pasek Wedana. All Rights Reserved.`;
+
+    populateProfile();
+    validateContactForm();
+    setupMobileMenu();
+    setupScrollSpy();
+    updateLiveClock();
+});
