@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileData = {
         nama: "I Gede Pasek Wedana",
         jabatan: "IT Enthusiast",
-        fotoUrl: "https://i.pinimg.com/564x/60/04/c4/6004c4a8da220e7175c440f34cf5e4ab.jpg",
+        fotoUrl: "https://static1.undiksha.ac.id/siakng/2022/fotomahasiswa/1926847027-1653365668.jpeg",
         deskripsi: "Saya adalah seorang penggiat teknologi dari Karangasem, Bali. Saya ingin menciptakan pengalaman digital yang menarik dan fungsional. Saya percaya pada inovasi digital untuk membangun masa depan yang lebih baik.",
         detail: [
             { label: "Email", value: "pasekwedana@gmail.com" },
